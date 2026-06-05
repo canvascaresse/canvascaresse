@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Canvas Caresse</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Language Bar -->
+  <div class="lang-bar">
+    <div class="lang-switcher">
+      <button class="lang-btn active" data-lang="fr">FR</button>
+      <span class="lang-sep">|</span>
+      <button class="lang-btn" data-lang="en">EN</button>
+      <span class="lang-sep">|</span>
+      <button class="lang-btn" data-lang="zh">中文</button>
+      <span class="lang-sep">|</span>
+      <button class="lang-btn" data-lang="ja">日本語</button>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <header class="site-header">
+    <nav class="nav-container">
+      <ul class="nav-links-left">
+        <li><a href="#atelier" data-i18n="nav.atelier">Atelier</a></li>
+        <li><a href="#portfolio" data-i18n="nav.oeuvres">Œuvres</a></li>
+      </ul>
+      <div class="nav-logo">
+        <a href="#" class="logo-text">Canvas Caresse</a>
+      </div>
+      <ul class="nav-links-right">
+        <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+        <li><a href="mailto:hello@canvascaresse.com">✉</a></li>
+      </ul>
+      <button class="nav-toggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-image">
+      <div class="hero-image-placeholder">
+        <div class="placeholder-icon">❀</div>
+        <span data-i18n="vis.main">Œuvre principale</span>
+      </div>
+      <span class="hero-image-label" data-i18n="hero.label">Collection 2026</span>
+    </div>
+    <div class="hero-content">
+      <p class="hero-season" data-i18n="hero.eyebrow">Art Floral — Pièces Uniques</p>
+      <h1 class="hero-title" data-i18n-html="hero.title">
+        La beauté<br />
+        <em>éphémère</em><br />
+        immortalisée
+      </h1>
+      <div class="hero-rule"></div>
+      <p class="hero-desc" data-i18n="hero.desc">
+        Chaque pétale capturé sur toile. Chaque composition, une poésie silencieuse
+        née entre la nature et le geste artistique.
+      </p>
+      <a href="#portfolio" class="btn-primary" data-i18n="hero.cta">Découvrir</a>
+    </div>
+  </section>
+
+  <!-- Atelier -->
+  <section id="atelier" class="atelier">
+    <div class="container">
+      <div class="atelier-header">
+        <div>
+          <p class="section-eyebrow reveal" data-i18n="atelier.eyebrow">L'Atelier</p>
+          <h2 class="section-title reveal" data-i18n-html="atelier.title">Une passion<br />née de <em>la nature</em></h2>
+        </div>
+        <p class="atelier-lead reveal" data-i18n="atelier.lead">
+          Canvas Caresse est un studio d'art floral fondé avec l'âme d'une poète.
+          Chaque œuvre naît d'une conversation entre la délicatesse des fleurs
+          et la permanence de la toile.
+        </p>
+      </div>
+
+      <div class="atelier-body reveal">
+        <div class="atelier-visual-main">
+          <div class="vis-placeholder">
+            <div class="placeholder-icon">✿</div>
+            <span data-i18n="vis.atelier">Photo atelier</span>
+          </div>
+        </div>
+        <div class="atelier-visual-sm">
+          <div class="atelier-visual-sm-top">
+            <div class="vis-placeholder">
+              <div class="placeholder-icon">❁</div>
+              <span data-i18n="vis.detail">Détail</span>
+            </div>
+          </div>
+          <div class="atelier-visual-sm-bottom">
+            <div class="vis-placeholder vis-placeholder--inv">
+              <div class="placeholder-icon">✾</div>
+              <span data-i18n="vis.materials">Matières</span>
+            </div>
+          </div>
+        </div>
+        <div class="atelier-text-col">
+          <p data-i18n="atelier.body">
+            Inspirée par les grands ateliers parisiens du dix-neuvième siècle,
+            je crée des pièces qui capturent la grâce éphémère du monde végétal —
+            pour qu'elle dure une éternité.
+          </p>
+          <div class="atelier-stats">
+            <span class="stat-num">100%</span>
+            <span class="stat-label" data-i18n-html="atelier.stat">Pièces originales<br />faites main</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Portfolio -->
+  <section id="portfolio" class="portfolio">
+    <div class="container">
+      <div class="portfolio-header">
+        <div>
+          <p class="section-eyebrow reveal" data-i18n="portfolio.eyebrow">Les Œuvres</p>
+          <h2 class="section-title reveal" data-i18n-html="portfolio.title">Collection <em>Printemps</em></h2>
+        </div>
+        <span class="portfolio-count">05</span>
+      </div>
+
+      <div class="portfolio-grid">
+        <div class="artwork-card reveal">
+          <div class="artwork-placeholder">
+            <div class="placeholder-icon">❀</div>
+            <span data-i18n="coming">À venir</span>
+          </div>
+          <div class="artwork-info">
+            <h3 class="artwork-title">Pivoines en Mai</h3>
+            <span class="artwork-medium" data-i18n="medium.oil">Huile sur toile</span>
+          </div>
+        </div>
+        <div class="artwork-card reveal">
+          <div class="artwork-placeholder">
+            <div class="placeholder-icon">✿</div>
+            <span data-i18n="coming">À venir</span>
+          </div>
+          <div class="artwork-info">
+            <h3 class="artwork-title">Roses de Provence</h3>
+            <span class="artwork-medium" data-i18n="medium.watercolor">Aquarelle</span>
+          </div>
+        </div>
+        <div class="artwork-card reveal">
+          <div class="artwork-placeholder">
+            <div class="placeholder-icon">✾</div>
+            <span data-i18n="coming">À venir</span>
+          </div>
+          <div class="artwork-info">
+            <h3 class="artwork-title">Iris Sauvages</h3>
+            <span class="artwork-medium" data-i18n="medium.acrylic">Acrylique</span>
+          </div>
+        </div>
+        <div class="artwork-card reveal">
+          <div class="artwork-placeholder">
+            <div class="placeholder-icon">❁</div>
+            <span data-i18n="coming">À venir</span>
+          </div>
+          <div class="artwork-info">
+            <h3 class="artwork-title">Bouquet de Mariée</h3>
+            <span class="artwork-medium" data-i18n="medium.mixed">Techniques mixtes</span>
+          </div>
+        </div>
+        <div class="artwork-card reveal">
+          <div class="artwork-placeholder">
+            <div class="placeholder-icon">✽</div>
+            <span data-i18n="coming">À venir</span>
+          </div>
+          <div class="artwork-info">
+            <h3 class="artwork-title">Dahlias d'Automne</h3>
+            <span class="artwork-medium" data-i18n="medium.pastel">Pastel sec</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="portfolio-footer">
+        <a href="#contact" class="btn-secondary" data-i18n="portfolio.cta">Commande sur mesure</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quote -->
+  <section class="quote-section">
+    <div class="container">
+      <blockquote>
+        <p data-i18n-html="quote">« Les fleurs sont les mots que la nature choisit<br />pour exprimer l'ineffable. »</p>
+        <p class="quote-attribution">Canvas Caresse</p>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-text">
+          <p class="section-eyebrow reveal" data-i18n="contact.eyebrow">Contact</p>
+          <h2 class="section-title reveal" data-i18n-html="contact.title">Parlons de<br /><em>votre projet</em></h2>
+          <p class="reveal" data-i18n="contact.desc">
+            Commandes personnalisées, collaborations,
+            expositions — je serais ravie d'échanger avec vous.
+          </p>
+          <div class="contact-details reveal">
+            <div class="contact-item">
+              <span class="contact-icon">✉</span>
+              <a href="mailto:hello@canvascaresse.com">hello@canvascaresse.com</a>
+            </div>
+            <div class="contact-item">
+              <span class="contact-icon">◎</span>
+              <span>@canvascaresse</span>
+            </div>
+          </div>
+        </div>
+        <form class="contact-form reveal" onsubmit="handleSubmit(event)">
+          <div class="form-group">
+            <label for="name" data-i18n="form.name">Nom</label>
+            <input type="text" id="name" name="name"
+              data-i18n-placeholder="form.name.ph"
+              placeholder="Votre nom" required />
+          </div>
+          <div class="form-group">
+            <label for="email" data-i18n="form.email">E-mail</label>
+            <input type="email" id="email" name="email"
+              placeholder="votre@email.com" required />
+          </div>
+          <div class="form-group">
+            <label for="message" data-i18n="form.message">Message</label>
+            <textarea id="message" name="message" rows="5"
+              data-i18n-placeholder="form.message.ph"
+              placeholder="Décrivez votre projet…" required></textarea>
+          </div>
+          <button type="submit" class="btn-primary" data-i18n="form.submit">Envoyer</button>
+          <div class="form-success" id="formSuccess" data-i18n="form.success">
+            Merci — je vous réponds très bientôt.
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-logo">Canvas Caresse</div>
+        <span class="footer-tagline" data-i18n="footer.tagline">Art Floral — Pièces Uniques — Paris</span>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy" data-i18n="footer.copy">© 2026 Canvas Caresse. Tous droits réservés.</p>
+        <div class="footer-links">
+          <a href="#atelier" data-i18n="nav.atelier">Atelier</a>
+          <a href="#portfolio" data-i18n="nav.oeuvres">Œuvres</a>
+          <a href="#contact" data-i18n="nav.contact">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
