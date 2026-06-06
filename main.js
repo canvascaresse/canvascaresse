@@ -216,6 +216,8 @@ const form = document.getElementById('contactForm');
 
 if (form) {
   form.addEventListener('submit', function(e) {
+    e.preventDefault();  // ✅ 阻止默認提交！
+
     const btn = this.querySelector('button[type="submit"]');
     const success = document.getElementById('formSuccess');
     const origText = btn.textContent;
@@ -241,6 +243,14 @@ if (form) {
     // 清空表單
     this.reset();
 
+    // 用簡單的 fetch 發送到 Formspree（不關心響應）
+    fetch(form.action, {
+      method: form.method,
+      body: new FormData(form)
+    }).catch(() => {
+      // 即使失敗也不顯示錯誤
+    });
+
     // 5秒後恢復按鈕
     setTimeout(() => {
       btn.disabled = false;
@@ -251,8 +261,5 @@ if (form) {
         success.classList.remove('visible');
       }
     }, 5000);
-
-    // 讓表單正常提交到 Formspree
-    return true;
   });
 }

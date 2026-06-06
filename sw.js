@@ -1,4 +1,4 @@
-const CACHE_NAME = 'canvas-caresse-v2.0';
+const CACHE_NAME = 'canvas-caresse-v2.1';
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
