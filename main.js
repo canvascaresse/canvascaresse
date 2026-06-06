@@ -238,25 +238,44 @@ if (form) {
 
       if (response.ok) {
         form.reset();
-        btn.textContent = origText;
+        btn.textContent = '✓ 已送出';
+        btn.style.color = 'var(--terra)';
 
         if (success) {
           success.classList.add('visible');
 
           setTimeout(() => {
             success.classList.remove('visible');
+            btn.textContent = origText;
+            btn.style.color = '';
+            btn.disabled = false;
+            btn.style.opacity = '';
           }, 5000);
+        } else {
+          setTimeout(() => {
+            btn.textContent = origText;
+            btn.style.color = '';
+            btn.disabled = false;
+            btn.style.opacity = '';
+          }, 3000);
         }
       } else {
-        btn.textContent = origText;
+        btn.textContent = '❌ 錯誤';
         console.error('Form error:', response.status);
+        setTimeout(() => {
+          btn.textContent = origText;
+          btn.disabled = false;
+          btn.style.opacity = '';
+        }, 2000);
       }
     } catch (err) {
+      btn.textContent = '❌ 網路錯誤';
       console.error('Network error:', err);
-      btn.textContent = origText;
+      setTimeout(() => {
+        btn.textContent = origText;
+        btn.disabled = false;
+        btn.style.opacity = '';
+      }, 2000);
     }
-
-    btn.disabled = false;
-    btn.style.opacity = '';
   });
 }

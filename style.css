@@ -803,6 +803,11 @@ ul { list-style: none; }
   .artwork-card:nth-child(n) { grid-column: span 1; }
   .portfolio-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
   .portfolio-count { font-size: 3rem; }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
 }
 
 /* =============================================
