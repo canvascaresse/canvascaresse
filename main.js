@@ -215,88 +215,44 @@ if (toggle) {
 const form = document.getElementById('contactForm');
 
 if (form) {
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    const btn = form.querySelector('button[type="submit"]');
+  form.addEventListener('submit', function(e) {
+    const btn = this.querySelector('button[type="submit"]');
     const success = document.getElementById('formSuccess');
     const origText = btn.textContent;
 
+    // 立即顯示成功信息
+    const lang = document.documentElement.lang || 'fr';
+    const successMsg = {
+      fr: '✓ Envoyé',
+      en: '✓ Sent',
+      zh: '✓ 已送出',
+      ja: '✓ 送信完了'
+    };
+
     btn.disabled = true;
+    btn.textContent = successMsg[lang] || successMsg['fr'];
+    btn.style.color = 'var(--terra)';
     btn.style.opacity = '0.6';
-    btn.textContent = '...';
 
-    try {
-      const formData = new FormData(form);
-      const response = await fetch(
-        'https://formspree.io/f/mkoaozwb',
-        {
-          method: 'POST',
-          body: formData
-        }
-      );
-
-      // 根據當前語言
-      const lang = document.documentElement.lang || 'fr';
-      const successMsg = {
-        fr: '✓ Envoyé',
-        en: '✓ Sent',
-        zh: '✓ 已送出',
-        ja: '✓ 送信完了'
-      };
-
-      // 任何響應狀態（包括重定向）都視為成功，因為 Formspree 已經發送了
-      form.reset();
-      btn.textContent = successMsg[lang] || successMsg['fr'];
-      btn.style.color = 'var(--terra)';
-
-      if (success) {
-        success.classList.add('visible');
-
-        setTimeout(() => {
-          success.classList.remove('visible');
-          btn.textContent = origText;
-          btn.style.color = '';
-          btn.disabled = false;
-          btn.style.opacity = '';
-        }, 5000);
-      } else {
-        setTimeout(() => {
-          btn.textContent = origText;
-          btn.style.color = '';
-          btn.disabled = false;
-          btn.style.opacity = '';
-        }, 3000);
-      }
-    } catch (err) {
-      console.error('Error:', err);
-
-      // 即使出現錯誤，郵件通常已發送，所以也顯示成功
-      const lang = document.documentElement.lang || 'fr';
-      const successMsg = {
-        fr: '✓ Envoyé',
-        en: '✓ Sent',
-        zh: '✓ 已送出',
-        ja: '✓ 送信完了'
-      };
-
-      form.reset();
-      btn.textContent = successMsg[lang] || successMsg['fr'];
-      btn.style.color = 'var(--terra)';
-
-      if (success) {
-        success.classList.add('visible');
-        setTimeout(() => {
-          success.classList.remove('visible');
-          btn.textContent = origText;
-          btn.style.color = '';
-          btn.disabled = false;
-          btn.style.opacity = '';
-        }, 5000);
-      }
+    if (success) {
+      success.classList.add('visible');
     }
 
-    btn.disabled = false;
-    btn.style.opacity = '';
+    // 清空表單
+    this.reset();
+
+    // 5秒後恢復按鈕
+    setTimeout(() => {
+      btn.disabled = false;
+      btn.textContent = origText;
+      btn.style.color = '';
+      btn.style.opacity = '';
+      if (success) {
+        success.classList.remove('visible');
+      }
+    }, 5000);
+
+    // 讓表單正常提交到 Formspree
+    return true;
   });
 }
