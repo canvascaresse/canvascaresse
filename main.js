@@ -236,9 +236,19 @@ if (form) {
         }
       );
 
-      if (response.ok) {
+      // Formspree 返回 200, 201, 或 302 都視為成功
+      if (response.ok || response.status === 302) {
         form.reset();
-        btn.textContent = '✓ 已送出';
+
+        // 根據當前語言顯示不同的成功信息
+        const lang = document.documentElement.lang || 'fr';
+        const successMsg = {
+          fr: '✓ Envoyé',
+          en: '✓ Sent',
+          zh: '✓ 已送出',
+          ja: '✓ 送信完了'
+        };
+        btn.textContent = successMsg[lang] || successMsg['fr'];
         btn.style.color = 'var(--terra)';
 
         if (success) {
