@@ -220,24 +220,25 @@ if (form) {
 
     const btn = form.querySelector('button[type="submit"]');
     const success = document.getElementById('formSuccess');
+    const origText = btn.textContent;
 
     btn.disabled = true;
     btn.style.opacity = '0.6';
+    btn.textContent = '...';
 
     try {
+      const formData = new FormData(form);
       const response = await fetch(
         'https://formspree.io/f/mkoaozwb',
         {
           method: 'POST',
-          body: new FormData(form),
-          headers: {
-            Accept: 'application/json'
-          }
+          body: formData
         }
       );
 
       if (response.ok) {
         form.reset();
+        btn.textContent = origText;
 
         if (success) {
           success.classList.add('visible');
@@ -247,10 +248,12 @@ if (form) {
           }, 5000);
         }
       } else {
-        alert('Unable to send message.');
+        btn.textContent = origText;
+        console.error('Form error:', response.status);
       }
     } catch (err) {
-      alert('Network error.');
+      console.error('Network error:', err);
+      btn.textContent = origText;
     }
 
     btn.disabled = false;

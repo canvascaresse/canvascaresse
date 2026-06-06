@@ -450,8 +450,28 @@ ul { list-style: none; }
 }
 .artwork-card:hover .artwork-placeholder { background: var(--light); }
 
+.artwork-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 280px;
+  position: relative;
+  overflow: hidden;
+  background: var(--light);
+}
+.artwork-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+.artwork-card:hover .artwork-image img { transform: scale(1.05); }
+
 .artwork-card:nth-child(1) .artwork-placeholder,
 .artwork-card:nth-child(5) .artwork-placeholder { min-height: 400px; }
+
+.artwork-card:nth-child(1) .artwork-image,
+.artwork-card:nth-child(5) .artwork-image { min-height: 400px; }
 
 .placeholder-icon { font-size: 1.8rem; color: var(--mid); opacity: 0.35; }
 .artwork-placeholder > span {
