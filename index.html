@@ -36,8 +36,9 @@
       </div>
       <ul class="nav-links-right">
         <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
-        <li><a href="mailto:hello@canvascaresse.com">✉</a></li>
+        <li><a href="mailto:contact@canvascaresse.com">✉</a></li>
       </ul>
+
       <button class="nav-toggle" aria-label="Menu">
         <span></span><span></span><span></span>
       </button>
@@ -214,36 +215,73 @@
           <div class="contact-details reveal">
             <div class="contact-item">
               <span class="contact-icon">✉</span>
-              <a href="mailto:hello@canvascaresse.com">hello@canvascaresse.com</a>
+              <a href="mailto:contact@canvascaresse.com">contact@canvascaresse.com</a>
             </div>
             <div class="contact-item">
               <span class="contact-icon">◎</span>
-              <span>@canvascaresse</span>
+                <a href="https://www.instagram.com/canvascaresse/"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                   Instagram
+                </a>
             </div>
           </div>
-        </div>
-        <form class="contact-form reveal" onsubmit="handleSubmit(event)">
+            <form
+                id="contactForm"
+                class="contact-form reveal"
+                action="https://formspree.io/f/mkoaozwb"
+                method="POST">
+          </div>
+          <input
+            type="hidden"
+            name="_subject"
+            value="New Canvas Caresse Inquiry">
           <div class="form-group">
             <label for="name" data-i18n="form.name">Nom</label>
-            <input type="text" id="name" name="name"
+            <input
+              type="text"
+              id="name"
+              name="name"
               data-i18n-placeholder="form.name.ph"
-              placeholder="Votre nom" required />
+              placeholder="Votre nom"
+              required />
           </div>
+
           <div class="form-group">
             <label for="email" data-i18n="form.email">E-mail</label>
-            <input type="email" id="email" name="email"
-              placeholder="votre@email.com" required />
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="votre@email.com"
+              required />
           </div>
+
           <div class="form-group">
             <label for="message" data-i18n="form.message">Message</label>
-            <textarea id="message" name="message" rows="5"
+            <textarea
+              id="message"
+              name="message"
+              rows="5"
               data-i18n-placeholder="form.message.ph"
-              placeholder="Décrivez votre projet…" required></textarea>
+              placeholder="Décrivez votre projet…"
+              required></textarea>
           </div>
-          <button type="submit" class="btn-primary" data-i18n="form.submit">Envoyer</button>
-          <div class="form-success" id="formSuccess" data-i18n="form.success">
+
+          <button
+            type="submit"
+            class="btn-primary"
+            data-i18n="form.submit">
+            Envoyer
+          </button>
+
+          <div
+            class="form-success"
+            id="formSuccess"
+            data-i18n="form.success">
             Merci — je vous réponds très bientôt.
           </div>
+
         </form>
       </div>
     </div>

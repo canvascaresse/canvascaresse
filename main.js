@@ -192,21 +192,68 @@ if (toggle) {
 }
 
 // --- Contact form ---
-function handleSubmit(e) {
-  e.preventDefault();
-  const btn = e.target.querySelector('button[type="submit"]');
-  const origText = btn.textContent;
-  btn.disabled = true;
-  btn.style.opacity = '0.5';
-  setTimeout(() => {
-    e.target.reset();
+// function handleSubmit(e) {
+//   e.preventDefault();
+//   const btn = e.target.querySelector('button[type="submit"]');
+//   const origText = btn.textContent;
+//   btn.disabled = true;
+//   btn.style.opacity = '0.5';
+//   setTimeout(() => {
+//     e.target.reset();
+//     btn.disabled = false;
+//     btn.style.opacity = '';
+//     btn.textContent = origText;
+//     const msg = document.getElementById('formSuccess');
+//     if (msg) {
+//       msg.classList.add('visible');
+//       setTimeout(() => msg.classList.remove('visible'), 5000);
+//     }
+//   }, 1200);
+// }
+
+// --- Formspree submit ---
+const form = document.getElementById('contactForm');
+
+if (form) {
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const btn = form.querySelector('button[type="submit"]');
+    const success = document.getElementById('formSuccess');
+
+    btn.disabled = true;
+    btn.style.opacity = '0.6';
+
+    try {
+      const response = await fetch(
+        'https://formspree.io/f/mkoaozwb',
+        {
+          method: 'POST',
+          body: new FormData(form),
+          headers: {
+            Accept: 'application/json'
+          }
+        }
+      );
+
+      if (response.ok) {
+        form.reset();
+
+        if (success) {
+          success.classList.add('visible');
+
+          setTimeout(() => {
+            success.classList.remove('visible');
+          }, 5000);
+        }
+      } else {
+        alert('Unable to send message.');
+      }
+    } catch (err) {
+      alert('Network error.');
+    }
+
     btn.disabled = false;
     btn.style.opacity = '';
-    btn.textContent = origText;
-    const msg = document.getElementById('formSuccess');
-    if (msg) {
-      msg.classList.add('visible');
-      setTimeout(() => msg.classList.remove('visible'), 5000);
-    }
-  }, 1200);
+  });
 }
