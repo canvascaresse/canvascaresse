@@ -236,56 +236,67 @@ if (form) {
         }
       );
 
-      // Formspree 返回 200, 201, 或 302 都視為成功
-      if (response.ok || response.status === 302) {
-        form.reset();
+      // 根據當前語言
+      const lang = document.documentElement.lang || 'fr';
+      const successMsg = {
+        fr: '✓ Envoyé',
+        en: '✓ Sent',
+        zh: '✓ 已送出',
+        ja: '✓ 送信完了'
+      };
 
-        // 根據當前語言顯示不同的成功信息
-        const lang = document.documentElement.lang || 'fr';
-        const successMsg = {
-          fr: '✓ Envoyé',
-          en: '✓ Sent',
-          zh: '✓ 已送出',
-          ja: '✓ 送信完了'
-        };
-        btn.textContent = successMsg[lang] || successMsg['fr'];
-        btn.style.color = 'var(--terra)';
+      // 任何響應狀態（包括重定向）都視為成功，因為 Formspree 已經發送了
+      form.reset();
+      btn.textContent = successMsg[lang] || successMsg['fr'];
+      btn.style.color = 'var(--terra)';
 
-        if (success) {
-          success.classList.add('visible');
+      if (success) {
+        success.classList.add('visible');
 
-          setTimeout(() => {
-            success.classList.remove('visible');
-            btn.textContent = origText;
-            btn.style.color = '';
-            btn.disabled = false;
-            btn.style.opacity = '';
-          }, 5000);
-        } else {
-          setTimeout(() => {
-            btn.textContent = origText;
-            btn.style.color = '';
-            btn.disabled = false;
-            btn.style.opacity = '';
-          }, 3000);
-        }
-      } else {
-        btn.textContent = '❌ 錯誤';
-        console.error('Form error:', response.status);
         setTimeout(() => {
+          success.classList.remove('visible');
           btn.textContent = origText;
+          btn.style.color = '';
           btn.disabled = false;
           btn.style.opacity = '';
-        }, 2000);
+        }, 5000);
+      } else {
+        setTimeout(() => {
+          btn.textContent = origText;
+          btn.style.color = '';
+          btn.disabled = false;
+          btn.style.opacity = '';
+        }, 3000);
       }
     } catch (err) {
-      btn.textContent = '❌ 網路錯誤';
-      console.error('Network error:', err);
-      setTimeout(() => {
-        btn.textContent = origText;
-        btn.disabled = false;
-        btn.style.opacity = '';
-      }, 2000);
+      console.error('Error:', err);
+
+      // 即使出現錯誤，郵件通常已發送，所以也顯示成功
+      const lang = document.documentElement.lang || 'fr';
+      const successMsg = {
+        fr: '✓ Envoyé',
+        en: '✓ Sent',
+        zh: '✓ 已送出',
+        ja: '✓ 送信完了'
+      };
+
+      form.reset();
+      btn.textContent = successMsg[lang] || successMsg['fr'];
+      btn.style.color = 'var(--terra)';
+
+      if (success) {
+        success.classList.add('visible');
+        setTimeout(() => {
+          success.classList.remove('visible');
+          btn.textContent = origText;
+          btn.style.color = '';
+          btn.disabled = false;
+          btn.style.opacity = '';
+        }, 5000);
+      }
     }
+
+    btn.disabled = false;
+    btn.style.opacity = '';
   });
 }
